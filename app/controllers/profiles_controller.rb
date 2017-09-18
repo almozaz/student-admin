@@ -44,8 +44,8 @@ class ProfilesController < ApplicationController
     end
 
     def set_roles
-      @students = Profile.find_by(admin: false)
-      @admins = Profile.find_by(admin: true)
+      @students = Profile.where(admin: false)
+      @admins = Profile.where(admin: true)
     end
 
     def admin_only
