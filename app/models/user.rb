@@ -5,6 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
+
+  def has_profile?
+    profile.present? && profile.persisted?
+  end
+
+  def full_name
+    profile.full_name
+  end
 end
 
 # identify admins with:
