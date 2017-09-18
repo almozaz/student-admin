@@ -11,6 +11,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "association with profile" do
+    let(:user) { create :user }
+    let!(:profile) { create :profile, user: user }
+
+    it "has profile" do
+      expect(user.profile).to eq(profile)
+    end
+
+    it "deletes associated events" do
+      expect { user.destroy }.to change(user.profile, :count).by(-1)
+    end
+  end
+
   describe "has_profile?" do
     let!(:user) { create :user }
     let!(:profile) { create :profile, user: user }
