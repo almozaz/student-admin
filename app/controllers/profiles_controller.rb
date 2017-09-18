@@ -29,18 +29,12 @@ class ProfilesController < ApplicationController
   end
 
   private
-  def set_profile
-    @profile = current_user.profile
-  end
+    def set_profile
+      @profile = current_user.profile
+    end
 
-<<<<<<< HEAD
-  def profile_params
-    params.require(:profile).permit(:first_name, :last_name)
-  end
-=======
     def profile_params
       params.require(:profile).permit(:first_name, :last_name)
     end
->>>>>>> 0b39cdb97577d0cb9e2ebd652fcf1424f605dff2
 
 end
