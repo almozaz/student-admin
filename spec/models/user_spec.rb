@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "User roles" do
+    it "a new user is created as student by default"
+
+    student = User.new
+
+    expect(student.admin).to eq(false)
+  end
 end
