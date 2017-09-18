@@ -19,8 +19,8 @@ RSpec.describe User, type: :model do
       expect(user.profile).to eq(profile)
     end
 
-    it "deletes associated events" do
-      expect { user.destroy }.to change(user.profile, :count).by(-1)
+    it "deletes associate profile" do
+      expect { user.destroy }.to change( Profile, :count).by(-1)
     end
   end
 
