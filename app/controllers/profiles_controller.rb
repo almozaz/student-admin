@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+  
   end
 
   def update
@@ -35,5 +36,5 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(:first_name, :last_name)
     end
-  end
+
 end
