@@ -38,8 +38,14 @@ gem 'jquery-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_girl_rails', '4.7.0'
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
   gem 'rspec-rails'
   gem 'capybara'
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 group :development do
