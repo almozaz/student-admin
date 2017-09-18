@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update]
   before_action :set_roles
   before_action :authenticate_user!
+  before_action :admin_only, except: [:new, :create, :show, :update]
 
   def index
     @profiles = Profile.all
@@ -46,5 +47,11 @@ class ProfilesController < ApplicationController
       @students = Profile.find_by(admin: false)
       @admins = Profile.find_by(admin: true)
     end
+
+    def admin_only
+    unless current_user.profile.admin?
+      redirect_to root_path, :alert => "Access denied."
+    end
+  end
 
 end
