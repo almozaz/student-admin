@@ -1,6 +1,6 @@
 <h1>Welcome to student2student</h1>
 
-<% if @user.admin == true %>
+<% if @user.profile.admin == true %>
   <%= render "admin_home" %>
 <% else %>
   <%= render "student_home" %>

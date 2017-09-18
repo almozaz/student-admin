@@ -1,6 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update]
+  before_action :set_roles
   before_action :authenticate_user!
+
+  def index
+    @profiles = Profile.all
+  end
 
   def new
     @profile = Profile.new
@@ -35,6 +40,11 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:profile).permit(:first_name, :last_name)
+    end
+
+    def set_roles
+      @students = Profile.find_by(admin: false)
+      @admins = Profile.find_by(admin: true)
     end
 
 end

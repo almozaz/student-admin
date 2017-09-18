@@ -7,4 +7,6 @@ class Api::ProfilesController < ApplicationController
     }.to_json
   end
 
+  private
+
 end
