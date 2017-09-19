@@ -6,10 +6,8 @@ function changeRole(event){
 
   var changeButton = this;
   var userItem = $(this).parent();
-  var roleState = $(userItem).parent();
   var profileId = $(userItem).data("id");
-
-  profileAdmin = determineRole(userItem)
+  var profileAdmin = determineRole(userItem)
 
     $.ajax({
       type: "PATCH",
@@ -23,6 +21,8 @@ function changeRole(event){
     })
 
     .done(function(data){
+      $(userItem).remove();
+
       console.log(data);
 
       var listId = data.profile.id;
@@ -41,8 +41,7 @@ function changeRole(event){
         $("#student-list").append(listItem);
       }
 
-      $(userItem).remove();
-      $(".change-role").bind('click', changeRole);
+      $(listItem.children()).bind('click', changeRole);
 
     })
 }
