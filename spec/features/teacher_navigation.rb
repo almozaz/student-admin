@@ -15,4 +15,14 @@ describe "Navigation" do
 
     expect(page).to have_text("View all users")
   end
+
+  it "navigate to profile list" do
+    visit root_path
+
+    click_link "View all users"
+
+    expect(page).to have_text("Teachers")
+
+    expect(page).to have_text("Students")
+  end
 end
