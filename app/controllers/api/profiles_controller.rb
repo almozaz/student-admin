@@ -12,7 +12,8 @@ class Api::ProfilesController < ApplicationController
 
     if profile.update(profile_params)
       render status: 201, json: {
-        message: "Profile updated!"
+        message: "Profile updated!",
+        profile: profile
       }.to_json
     else
       render status: 422, json: {
@@ -26,7 +27,7 @@ class Api::ProfilesController < ApplicationController
   def profile_params
     params
       .require(:profile)
-      .permit(:admin)      
+      .permit(:admin)
   end
 
 end
