@@ -33,4 +33,6 @@ Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, 
 Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student9)
 Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student10)
 
-MatchPair.create!(user_id: 5, match_id: 6)
+MatchPair.create!(user_id: 5, match_id: 6, date: "1-1-2017")
+MatchPair.create!(user_id: 5, match_id: 7, date: "2-1-2017")
+MatchPair.create!(user_id: 5, match_id: 8, date: "3-1-2017")
