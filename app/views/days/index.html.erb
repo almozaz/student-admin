@@ -2,4 +2,24 @@
 
 <%= render @days %>
 
-<span class="btn btn-default">Generate pairs for this date</span>
+<%= form_for @new_day do |f| %>
+
+  <div class="form-group">
+   <label>Day:</label>
+   <%= f.text_field :date %>
+ </div>
+
+ <div class="actions">
+   <%= f.submit "Generate pairs for this date", class: "btn btn-success" %>
+ </div>
+<% end %>
+
+<script>
+  $(function() {
+
+    $('#day_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+
+  });
+</script>

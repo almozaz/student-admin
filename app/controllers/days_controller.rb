@@ -3,6 +3,7 @@ class DaysController < ApplicationController
 
   def index
     @days = Day.all
+    @new_day = Day.new 
   end
 
   def show
