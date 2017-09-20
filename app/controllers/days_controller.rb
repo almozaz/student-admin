@@ -8,5 +8,6 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
+    @match_pairs = @day.match_pairs
   end
 end
