@@ -1,20 +1,21 @@
 class Pairing
 
-  def get_users
-    # get list of all users
+  def get_students
+    students = Profile.where(admin: false).ids
   end
 
-  def randomize_order
-
+  def randomize_order(students)
+    students = students.shuffle
   end
 
   def remove_odd_one
-    # if number is odd, take one out & return value
+    if students.count % 2 = 1
+      extra_student = students.pop
+    end
   end
 
   def pair_users
-    # instanciate a match_pair for every valid pair
-    # pop instanciated users from list
+    pairs = students.each_slice(2).to_a
   end
 
   def more_possibilities?
