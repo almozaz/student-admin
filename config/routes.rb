@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :profiles
-
+  resources :days
 
   get '/calendar' => 'application#calendar'
 
