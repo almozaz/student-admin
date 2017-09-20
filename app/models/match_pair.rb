@@ -4,8 +4,7 @@ class MatchPair < ApplicationRecord
 
   after_create :create_inverse, unless: :has_inverse?
 
-  validates_uniqueness_of :user_id, scope: :match_id
-
+  # validates_uniqueness_of :user_id, scope: :match_id
 
   def create_inverse
     self.class.create(inverse_match)
