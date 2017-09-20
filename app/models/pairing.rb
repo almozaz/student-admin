@@ -2,7 +2,7 @@ class Pairing
 
   def initialize
     self.get_students
-    @rounds = @students.size - 1
+
     @pairs_per_round = @students.size / 2
     @results = []
   end
@@ -15,6 +15,14 @@ class Pairing
   def create_pairs
     @pairs_per_round.times do |index|
       @results << [@students[index], @students.reverse[index]]
+    end
+  end
+
+  def match_pairs
+    @results.each do |pair|
+      student = pair[0]
+      match = pair[1]
+      MatchPair.create(user_id: student, match_id: match)
     end
   end
 
