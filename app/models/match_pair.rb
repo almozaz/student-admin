@@ -6,6 +6,12 @@ class MatchPair < ApplicationRecord
 
   validates_uniqueness_of :user_id, scope: :match_id
 
+  def initialize(user_id, match_id, date)
+   @user_id = user_id
+   @match_id = match_id
+   @date = date
+  end
+
   def create_inverse
     self.class.create(user_id: self.match.id, match_id: self.user.id)
   end
