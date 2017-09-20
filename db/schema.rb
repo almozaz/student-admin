@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170919133855) do
     t.bigint "match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "date"
+    t.date "date"
     t.index ["match_id"], name: "index_match_pairs_on_match_id"
     t.index ["user_id"], name: "index_match_pairs_on_user_id"
   end

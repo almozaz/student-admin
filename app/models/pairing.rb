@@ -1,9 +1,13 @@
 class Pairing
   @@index = 1
-  @date = DateTime.now
+  @date = Date.today
+  cattr_accessor :pairs
 
   def initialize
-
+    self.get_students
+    self.randomize_order
+    self.remove_odd_one
+    self.pair_users
   end
 
   def get_students
@@ -21,11 +25,22 @@ class Pairing
   end
 
   def pair_users
-    pairs = @students.each_slice(2).to_a
-    pairs.each do |pair|
-      student = pair[0]
-      match = pair[1]
-      MatchPair.new(student, match, @date)
+    @pairs = @students.each_slice(2).to_a
+
+  end
+
+  def create_pairs
+    @pairs.each_index do |index|
+      student = @pairs[index][0]
+      match = @pairs[index][1]
+      x = MatchPair.new
+      x.user_id = student
+      x.match_id = match
+      x.date = @date
+      x.save
+      if x.save
+
+      end
     end
   end
 
