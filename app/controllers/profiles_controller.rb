@@ -16,6 +16,8 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
 
     if @profile.save
+      @all_students = Profile.where(admin: false).ids
+      StudentList.create(list: @all_students)
       redirect_to root_path
     else
       render :new
@@ -28,6 +30,8 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
+      @all_students = Profile.where(admin: false).ids
+      StudentList.create(list: @all_students)
       redirect_to root_path
     else
       render :edit
