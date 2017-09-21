@@ -32,7 +32,7 @@ class Pairing
   end
 
   def rotate_student_list(students)
-    byebug
+    
     new_student_list = [students[0]] + students[1..-1].rotate(-1)
 
     StudentList.create(list: new_student_list)
