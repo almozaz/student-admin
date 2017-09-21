@@ -10,17 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919133855) do
+ActiveRecord::Schema.define(version: 20170920132732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "days", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "match_pairs", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "match_id"
+    t.bigint "day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "date"
+    t.index ["day_id"], name: "index_match_pairs_on_day_id"
     t.index ["match_id"], name: "index_match_pairs_on_match_id"
     t.index ["user_id"], name: "index_match_pairs_on_user_id"
   end
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170919133855) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "match_pairs", "days"
   add_foreign_key "match_pairs", "users"
   add_foreign_key "match_pairs", "users", column: "match_id"
   add_foreign_key "profiles", "users"
