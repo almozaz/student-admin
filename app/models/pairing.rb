@@ -1,5 +1,7 @@
 class Pairing
 
+DUMMY_STUDENT = User.find(666)
+
   def initialize(day, student_list)
     students = eval(student_list.list)
     old_list = eval(student_list.list)
@@ -10,24 +12,27 @@ class Pairing
   end
 
   def create_pairs(day, students)
-    students.push(nil) if students.size.odd?
-
-    pairs_per_round = students.size / 2
+    byebug
+    students.push(DUMMY_STUDENT.id) if students.size.odd?
+    byebug
+    amount_of_pairs = students.size / 2
 
     resulting_pairs = []
 
-    pairs_per_round.times do |index|
+    amount_of_pairs.times do |index|
       resulting_pairs << [students[index], students.reverse[index]]
     end
-
     match_pairs(day, resulting_pairs)
+    byebug
   end
 
   def match_pairs(day, resulting_pairs)
     resulting_pairs.each do |pair|
       student = pair[0]
       match = pair[1]
-      MatchPair.create(user_id: student, match_id: match, day: day)
+      byebug
+      new_match_pair = MatchPair.create(user_id: student, match_id: match, day: day)
+      puts new_match_pair.errors.full_messages
     end
   end
 

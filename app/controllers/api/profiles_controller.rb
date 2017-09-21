@@ -11,7 +11,7 @@ class Api::ProfilesController < ApplicationController
     profile = Profile.find(params[:id])
 
     if profile.update(profile_params)
-      @all_students = Profile.where(admin: false).ids
+      @all_students = Profile.return_student_ids
       StudentList.create(list: @all_students)
       render status: 201, json: {
         message: "Profile updated!",
