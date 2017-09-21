@@ -1,36 +1,45 @@
 class Pairing
 
-  def initialize
-    self.get_students
+DUMMY_STUDENT = User.find(666)
+
+  def initialize(day, student_list)
+    students = eval(student_list.list)
+    old_list = eval(student_list.list)
+    @day = day.id
+
+    create_pairs(day, students)
+    rotate_student_list(old_list)
   end
 
-  def get_students
-    @students = Profile.where(admin: false).ids
-  end
+  def create_pairs(day, students)
+    byebug
+    students.push(DUMMY_STUDENT.id) if students.size.odd?
+    byebug
+    amount_of_pairs = students.size / 2
 
-  def create_pairs(date)
-    @date = date
-    @students.push(nil) if @students.size.odd?
-    @pairs_per_round = @students.size / 2
-    @results = []
+    resulting_pairs = []
 
-    @pairs_per_round.times do |index|
-      @results << [@students[index], @students.reverse[index]]
+    amount_of_pairs.times do |index|
+      resulting_pairs << [students[index], students.reverse[index]]
     end
-    self.match_pairs
+    match_pairs(day, resulting_pairs)
+    byebug
   end
 
-  def match_pairs
-    @results.each do |pair|
+  def match_pairs(day, resulting_pairs)
+    resulting_pairs.each do |pair|
       student = pair[0]
       match = pair[1]
-      MatchPair.create(user_id: student, match_id: match, date: @date)
+      byebug
+      new_match_pair = MatchPair.create(user_id: student, match_id: match, day: day)
+      puts new_match_pair.errors.full_messages
     end
-    self.rotate
   end
 
-  def rotate
-    @students = [@students[0]] + @students[1..-1].rotate(-1)
-    @results = []
+  def rotate_student_list(old_list)
+
+    new_student_list = [old_list[0]] + old_list[1..-1].rotate(-1)
+
+    StudentList.create(list: new_student_list)
   end
 end

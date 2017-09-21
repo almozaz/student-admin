@@ -1,10 +1,7 @@
-<!-- <h1>Welcome to student2student</h1>
 
-<% if @user.profile.admin == true %>
-<a href="/profiles" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-list"></span> Staff & students</a>
-<% end %>
-
-<a href="/calendar" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-calendar"></span> Calendar</a> -->
+<% if @user.has_profile? == false %>
+  <%= link_to "Please create a profile", new_profile_path %>
+<% else %>
 
 <div class="row">
   <div class="col-xs-12 text-center">
@@ -29,3 +26,5 @@
     </div>
   </div>
 </div>
+
+<% end %>

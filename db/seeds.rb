@@ -2,6 +2,9 @@ MatchPair.destroy_all
 Profile.destroy_all
 User.destroy_all
 
+dummy = User.create(id: 666, email: "nobody@nobody.com", password: "123456")
+dummyprofile = Profile.create!(first_name: "Nobody", last_name: "at all", admin: nil, user: dummy)
+
 admin1  = User.create!(email: "admin1@admin.com", password: "123456")
 admin2  = User.create!(email: "admin2@admin.com", password: "123456")
 admin3  = User.create!(email: "admin3@admin.com", password: "123456")
@@ -33,8 +36,6 @@ Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, 
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student9)
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student10)
 
-day1 = Day.create!(date: Date.tomorrow)
 
-# MatchPair.create!(user_id: 5, match_id: 6, day: day1)
-# MatchPair.create!(user_id: 5, match_id: 7, day: day1)
-# MatchPair.create!(user_id: 5, match_id: 8, day: day1)
+all_students = Profile.return_student_ids
+StudentList.create!(list: all_students)

@@ -1,7 +1,7 @@
 class MatchPair < ApplicationRecord
   belongs_to :user
   belongs_to :match, class_name: "User"
-  belongs_to :day 
+  belongs_to :day
 
   after_create :create_inverse, unless: :has_inverse?
 
@@ -20,7 +20,7 @@ class MatchPair < ApplicationRecord
   end
 
   def inverse_match
-    { match_id: user_id, user_id: match_id, date: date }
+    { match_id: user_id, user_id: match_id, day: day }
   end
 
 end

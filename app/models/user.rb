@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
   has_many :match_pairs
-  has_many :matches, through: :match_pairs 
+  has_many :matches, through: :match_pairs
 
   def has_profile?
     profile.present? && profile.persisted?
