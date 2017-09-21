@@ -1,2 +1,74 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* display this row with flex and use wrap (= respect columns' widths) */
+
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+[class*="col-"] {
+  margin-bottom: 30px;
+}
+
+.content {
+  height: 100%;
+  padding: 20px;
+}
+
+.container {
+  margin: auto;
+}
+
+.main-container {
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 25px;
+  padding: 20px 30px;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  padding-bottom: 50px;
+
+  background-image: url(vintage-concrete.png);
+}
+
+.btn-xlarge {
+  padding: 50px 80px;
+  font-size: 30px; //change this to your desired size
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.right {
+  text-align:right !important;
+}
+
+.center {
+  text-align:center !important;
+}
+
+th {
+  background-color: white;
+}
+
+.table-responsive {
+  padding: 25px 0px 25px;
+}
+
+.title-padding {
+  padding: 20px;
+}
+
+.navbar-default {
+  background-color: white;
+  border-color: #E7E7E7;
+}

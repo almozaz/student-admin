@@ -5,13 +5,13 @@ function changeRole(event){
   event.preventDefault();
 
   var changeButton = this;
-  var userItem = $(this).parent();
+  var userItem = $(this).parent().parent();
   var profileId = $(userItem).data("id");
   var profileAdmin = determineRole(userItem)
 
     $.ajax({
       type: "PATCH",
-      url: "/api/profiles/"+profileId+".json",
+      url: "/api/profiles/" + profileId + ".json",
       data: JSON.stringify({
         admin: profileAdmin
       }),
@@ -22,7 +22,6 @@ function changeRole(event){
 
     .done(function(data){
       $(userItem).remove();
-
       console.log(data);
 
       var listId = data.profile.id;
@@ -30,24 +29,40 @@ function changeRole(event){
       var lastName = data.profile.last_name;
       var roleList = data.profile.admin;
 
-      var listItem = $('<li class="list-item"></li>')
+      if (roleList)
+          icon = '<a href="#" class="change-role"><span class="glyphicon glyphicon-arrow-down"></span></a>'
+      else
+          icon = '<a href="#" class="change-role"><span class="glyphicon glyphicon-arrow-up"></span></a>'
+
+      var tableDataFirstName = $('<td></td>')
+        .html(firstName);
+
+      var tableDataLastName = $('<td></td>')
+        .html(lastName);
+
+      var tableButton = $('<td class="center"></td>')
+        .html(icon);
+
+      var tableRow = $('<tr></tr>')
         .attr('data-id', listId)
-        .html(firstName + lastName + ' <a href="#" class="change-role">Change role</a>');
+        .append(tableDataFirstName)
+        .append(tableDataLastName)
+        .append(tableButton);
 
       if(roleList === true) {
-        $("#admin-list").append(listItem);
+        $("#admin-list").append(tableRow);
       }
       else {
-        $("#student-list").append(listItem);
+        $("#student-list").append(tableRow);
       }
 
-      $(listItem.children()).bind('click', changeRole);
+      $(tableRow.find('a')).bind('click', changeRole);
 
     })
 }
 
 function determineRole(userItem){
-  var currentRole = $(userItem).parent().prop("className")
+  var currentRole = $(userItem).parent().parent().prop("id");
 
   if (currentRole == "admin-list") {
     return false;
