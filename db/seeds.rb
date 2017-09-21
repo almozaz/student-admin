@@ -32,15 +32,3 @@ Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, 
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student8)
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student9)
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student10)
-
-<<<<<<< HEAD
-day1 = Day.create!(date: Date.tomorrow)
-
-MatchPair.create!(user_id: 5, match_id: 6, day: day1)
-MatchPair.create!(user_id: 5, match_id: 7, day: day1)
-MatchPair.create!(user_id: 5, match_id: 8, day: day1)
-=======
-# MatchPair.create!(user_id: 5, match_id: 6, date: "1-1-2017")
-# MatchPair.create!(user_id: 5, match_id: 7, date: "2-1-2017")
-# MatchPair.create!(user_id: 5, match_id: 8, date: "3-1-2017")
->>>>>>> e49c05d2b6ba34a4c73cae3df1a3de83841b7258
