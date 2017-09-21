@@ -32,3 +32,6 @@ Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, 
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student8)
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student9)
 # Profile.create!(first_name: Faker::Ancient.hero, last_name: Faker::Name.suffix, admin: false, user: student10)
+
+all_students = Profile.where(admin: false).ids
+StudentList.create!(list: all_students)

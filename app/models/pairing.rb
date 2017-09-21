@@ -2,11 +2,11 @@ class Pairing
 
   def initialize(day, student_list)
     students = eval(student_list.list)
-
+    old_list = eval(student_list.list)
     @day = day.id
 
     create_pairs(day, students)
-    rotate_student_list(students)
+    rotate_student_list(old_list)
   end
 
   def create_pairs(day, students)
@@ -31,9 +31,9 @@ class Pairing
     end
   end
 
-  def rotate_student_list(students)
-    
-    new_student_list = [students[0]] + students[1..-1].rotate(-1)
+  def rotate_student_list(old_list)
+
+    new_student_list = [old_list[0]] + old_list[1..-1].rotate(-1)
 
     StudentList.create(list: new_student_list)
   end
