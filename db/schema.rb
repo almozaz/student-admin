@@ -27,7 +27,11 @@ ActiveRecord::Schema.define(version: 20170920132732) do
     t.bigint "day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.index ["day_id"], name: "index_match_pairs_on_day_id"
+=======
+    t.date "date", default: "2017-09-20"
+>>>>>>> e49c05d2b6ba34a4c73cae3df1a3de83841b7258
     t.index ["match_id"], name: "index_match_pairs_on_match_id"
     t.index ["user_id"], name: "index_match_pairs_on_user_id"
   end
