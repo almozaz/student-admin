@@ -1,7 +1,31 @@
-<h1>Welcome to student2student</h1>
+<!-- <h1>Welcome to student2student</h1>
 
 <% if @user.profile.admin == true %>
-  <%= render "admin_home" %>
-<% else %>
-  <%= render "student_home" %>
+<a href="/profiles" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-list"></span> Staff & students</a>
 <% end %>
+
+<a href="/calendar" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-calendar"></span> Calendar</a> -->
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h1 class="text-muted">Welcome to</h1>
+    <h1 class="">student2student</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <div class="content">
+      <a href="/calendar" class="btn btn-xlarge btn-default"><span class="glyphicon glyphicon-calendar"></span> Calendar</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <div class="content">
+      <% if @user.profile.admin == true %>
+      <a href="/profiles" class="btn btn-xlarge btn-default"><span class="glyphicon glyphicon-list"></span> Staff & students</a>
+      <% end %>
+    </div>
+  </div>
+</div>
