@@ -14,4 +14,13 @@ RSpec.describe Profile, type: :model do
       expect(profile.full_name).to eq("#{profile.first_name} #{profile.last_name}")
     end
   end
+
+  describe "Profile roles" do
+    it "a new profile is created as student by default" do
+
+      student = Profile.new
+
+      expect(student.admin).to eq(false)
+    end
+  end
 end

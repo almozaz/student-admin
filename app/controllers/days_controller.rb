@@ -1,5 +1,6 @@
 class DaysController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin_only
 
   def index
     @days = Day.all
@@ -31,6 +32,12 @@ private
     params
       .require(:day)
       .permit(:date)
+  end
+
+  def admin_only
+    unless current_user.profile.admin?
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
 end

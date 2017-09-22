@@ -1,7 +1,7 @@
 class Day < ApplicationRecord
   has_many :match_pairs
 
-  validates :date, uniqueness: true
+  validates :date, presence: true, uniqueness: true
 
 
   def self.start_time
@@ -23,6 +23,16 @@ class Day < ApplicationRecord
       end
     end
     return filtered_match_pairs
+  end
+
+  def self.today(date)
+    today = Day.find_by(date: date)
+    if today == nil
+      new_day = Day.create(date: date)
+      return new_day
+    else
+      return today
+    end
   end
 
 end
