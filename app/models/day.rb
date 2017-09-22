@@ -1,7 +1,7 @@
 class Day < ApplicationRecord
   has_many :match_pairs
 
-  validates :date, uniqueness: true
+  validates :date, presence: true, uniqueness: true
 
   def todays_match_pairs
     match_pairs = self.match_pairs
