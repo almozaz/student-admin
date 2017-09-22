@@ -1,13 +1,9 @@
 class DaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, except: [:index, :show]
+  before_action :admin_only
 
   def index
-    if current_user.profile.admin == true
-      @days = Day.all.order('date DESC')
-    else
-      @days = Day.only_past_days.order('date DESC')
-    end
+    @days = Day.all.order('date DESC')
   end
 
   def show
