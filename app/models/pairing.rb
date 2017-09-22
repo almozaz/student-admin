@@ -13,7 +13,6 @@ DUMMY_STUDENT = User.find(666)
 
   def create_pairs(day, students)
     students.push(DUMMY_STUDENT.id) if students.size.odd?
-
     amount_of_pairs = students.size / 2
 
     resulting_pairs = []
@@ -28,7 +27,7 @@ DUMMY_STUDENT = User.find(666)
     resulting_pairs.each do |pair|
       student = pair[0]
       match = pair[1]
-      
+
       new_match_pair = MatchPair.create(user_id: student, match_id: match, day: day)
       puts new_match_pair.errors.full_messages
     end

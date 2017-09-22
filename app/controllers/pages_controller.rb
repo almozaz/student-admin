@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
+    @match = @user.todays_match
   end
 
 end
