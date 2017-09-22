@@ -2,7 +2,7 @@ MatchPair.destroy_all
 Profile.destroy_all
 User.destroy_all
 
-dummy = User.create(id: 666, email: "nobody@nobody.com", password: "123456")
+dummy = User.create!(id: 666, email: "nobody@nobody.com", password: "123456")
 dummyprofile = Profile.create!(first_name: "Nobody", last_name: "at all", admin: nil, user: dummy)
 
 admin1  = User.create!(email: "admin1@admin.com", password: "123456")
