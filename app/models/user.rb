@@ -40,14 +40,6 @@ class User < ApplicationRecord
     return match_name
   end
 
-  def past_matches
-    today_date = Date.today
-    all_past_match_pairs = Day.where("date < #{today_date}").match_pairs
-    
-
-  end
-
-
 
 end
 
