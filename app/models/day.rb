@@ -28,4 +28,14 @@ class Day < ApplicationRecord
       return today
     end
   end
+
+  def self.auto_generate_pairs
+    today_date = Date.today
+    today = Day.find_by(date: today_date)
+    if today == nil
+      new_day = Day.create(date: today_date)
+      Pairing.new(new_day, StudentList.last)
+    end
+  end
+
 end
