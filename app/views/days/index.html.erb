@@ -1,7 +1,23 @@
+<div class="calendar">
+<%= month_calendar events: @days do |date, days| %>
+  <%= date.day %>
+
+  <% days.each do |day| %>
+    <div class="day" id="<%= day.id %>">
+      <%= day.id %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+
+<div class="matches">
+<%= render "day" %>
+</div>
+<!--
 <h1>These dates have their pairs already generated</h1>
 
 <ul>
   <%= render @days %>
 </ul>
 
-<%= link_to "Generate pairs for a new day", new_day_path, class: "btn btn-default" %>
+<%= link_to "Generate pairs for a new day", new_day_path, class: "btn btn-default" %> -->
