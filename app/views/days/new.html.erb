@@ -1,28 +1,23 @@
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-1">
+<h1>Generate pairs for a new day</h1>
 
-    <h1 class="title-padding">Generate pairs for a new day</h1>
+<%= form_for @day do |f| %>
 
-    <%= form_for @day do |f| %>
+  <div class="form-group">
+   <label>Day:</label>
+   <%= f.text_field :date %>
+ </div>
 
-      <div class="form-group">
-       <label>Day:</label>
-       <%= f.text_field :date  %>
-     </div>
+ <div class="actions">
+   <%= f.submit "Generate pairs for this date", class: "btn btn-success" %>
+ </div>
+<% end %>
 
-     <div class="actions title-padding">
-       <%= f.submit "Generate pairs for this date", class: "btn btn-default" %>
-     </div>
-    <% end %>
+<script>
+  $(function() {
 
-    <script>
-      $(function() {
+    $('#day_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
 
-        $('#day_date').datepicker({
-          dateFormat: 'dd-mm-yy'
-        });
-
-      });
-    </script>
-  </div>
-</div>
+  });
+</script>

@@ -3,7 +3,7 @@ class DaysController < ApplicationController
   before_action :admin_only
 
   def index
-    @days = Day.all.order('date DESC')
+    @days = Day.all
   end
 
   def show
@@ -22,7 +22,7 @@ class DaysController < ApplicationController
       Pairing.new(@day, @student_list)
       redirect_to day_path(@day)
     else
-      redirect_to days_path
+      render :index, notice: "That day already exists"
     end
   end
 
