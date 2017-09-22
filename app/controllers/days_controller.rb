@@ -1,6 +1,6 @@
 class DaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, except: :index
+  before_action :admin_only, except: [:index, :show]
 
   def index
     if current_user.profile.admin == true
