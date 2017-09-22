@@ -4,9 +4,9 @@ class DaysController < ApplicationController
 
   def index
     if current_user.profile.admin == true
-      @days = Day.all
+      @days = Day.all.order('date DESC')
     else
-      @days = Day.only_past_days
+      @days = Day.only_past_days.order('date DESC')
     end
   end
 
@@ -26,7 +26,7 @@ class DaysController < ApplicationController
       Pairing.new(@day, @student_list)
       redirect_to day_path(@day)
     else
-      render :index, notice: "That day already exists"
+      redirect_to days_path
     end
   end
 
