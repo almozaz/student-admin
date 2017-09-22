@@ -3,7 +3,12 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
-    @match = @user.todays_match
+    if @user.profile.admin == false
+      @match = @user.todays_match
+      @past_matches = @user.past_matches
+    else
+      Day.auto_generate_pairs
+    end
   end
 
 end
