@@ -21,8 +21,8 @@
   <%= current_user.has_profile? ? current_user.full_name : current_user.email  %> <span class="caret"></span></a>
 
 <ul class="dropdown-menu">
-  <!-- <li><%= link_to "Your Matches"  %></li>
-  <li role="separator" class="divider"></li> -->
+  <li><%= link_to "Your Matches"  %></li>
+  <li role="separator" class="divider"></li>
 
   <% if current_user.has_profile? %>
     <li><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></li>
