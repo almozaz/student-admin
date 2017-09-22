@@ -4,8 +4,9 @@ class Day < ApplicationRecord
   validates :date, uniqueness: true
 
 
-  def start_time
+  def self.start_time
     Time.zone.at(self.date.to_time).to_datetime
+    # self.date.to_datetime
   end
 
   def todays_match_pairs
