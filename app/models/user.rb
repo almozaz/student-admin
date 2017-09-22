@@ -16,7 +16,19 @@ class User < ApplicationRecord
   def full_name
     profile.full_name
   end
+
+  def todays_match
+    today_date = Date.today
+    today = Day.find_by(date: today_date)
+    match_pair = self.match_pairs.find_by(day: today)
+
+    match_name = match_pair.match_name
+    return match_name
+  end
+
 end
+
+
 
 # identify admins with:
 # if current_user.admin?
