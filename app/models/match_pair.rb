@@ -23,4 +23,14 @@ class MatchPair < ApplicationRecord
     { match_id: user_id, user_id: match_id, day: day }
   end
 
+  def user_name
+    user_name = Profile.find_by(user_id: self.user_id).full_name
+    return user_name
+  end
+
+  def match_name
+    match_name = Profile.find_by(user_id: self.match_id).full_name
+    return match_name
+  end
+
 end
