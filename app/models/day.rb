@@ -3,6 +3,12 @@ class Day < ApplicationRecord
 
   validates :date, presence: true, uniqueness: true
 
+
+  def self.start_time
+    Time.zone.at(self.date.to_time).to_datetime
+    # self.date.to_datetime
+  end
+
   def todays_match_pairs
     match_pairs = self.match_pairs
     count = 0
@@ -28,4 +34,5 @@ class Day < ApplicationRecord
       return today
     end
   end
+
 end
