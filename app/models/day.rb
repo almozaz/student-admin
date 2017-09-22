@@ -3,13 +3,6 @@ class Day < ApplicationRecord
 
   validates :date, presence: true, uniqueness: true
 
-
-  def self.only_past_days
-    today_date = Date.today
-    past_days = Day.where("date <= ?", today_date)
-    return past_days
-  end
-
   def todays_match_pairs
     match_pairs = self.match_pairs
     count = 0
